@@ -1,3 +1,5 @@
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04 standard/.
+
 FROM janzi/vsts-build-agents:ubuntu-20.04
 
 ARG GO_VERSION=1.13.5

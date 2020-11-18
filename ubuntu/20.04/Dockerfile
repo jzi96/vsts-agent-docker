@@ -1,3 +1,5 @@
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04 .
+
 FROM ubuntu:20.04
 
 # To make it easier for build and release pipelines to run apt-get,
