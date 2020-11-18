@@ -28,12 +28,14 @@ steps:
     arguments: -t $(repoName):$(tagName)
 
 - task: Docker@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: Login to Docker Hub
   inputs:
     command: login
     containerRegistry: dockerhub
 
 - task: Docker@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: dockerhub
@@ -44,6 +46,7 @@ steps:
     command: 'push'
 
 - task: Docker@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   displayName: Logout of ACR
   inputs:
     command: logout
