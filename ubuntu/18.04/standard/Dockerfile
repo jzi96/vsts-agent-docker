@@ -1,3 +1,5 @@
+# docker build -t janzi/vsts-build-agents:ubuntu-18.04-standard standard/.
+
 FROM janzi/vsts-build-agents:ubuntu-18.04
 
 ARG GO_VERSION=1.13.5
@@ -96,7 +98,7 @@ ENV GOROOT_1_12_X64=/usr/local/go${GO_VERSION} \
 ENV PATH $PATH:$GOROOT/bin
 
 # Install Helm
-RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get-helm-3 | bash
 
 # Install Heroku CLI
 RUN curl https://cli-assets.heroku.com/install.sh | sh
@@ -258,15 +260,17 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /etc/apt/sources.list.d/*
 
+
+
 # Instally PyPy2
-RUN wget -q -P /tmp https://bitbucket.org/pypy/pypy/downloads/pypy${PY2_VERSION}-linux64.tar.bz2 \
+RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 \
  && tar -x -C /opt -f /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
  && rm /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
  && mv /opt/pypy${PY2_VERSION}-linux64 /opt/pypy2 \
  && ln -s /opt/pypy2/bin/pypy /usr/local/bin/pypy
 
 # Install PyPy3
-RUN wget -q -P /tmp https://bitbucket.org/pypy/pypy/downloads/pypy${PY3_VERSION}-linux64.tar.bz2 \
+RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && tar -x -C /opt -f /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && rm /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && mv /opt/pypy${PY3_VERSION}-linux64 /opt/pypy3 \

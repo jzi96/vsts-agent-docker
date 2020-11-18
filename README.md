@@ -117,10 +117,10 @@ These derived images include a set of standard capabilities that enable many of 
 - CMake 3.16.0
 - GCC 5.4.0
 - Go 1.13.5
-- Helm master)
+- Helm 3
 - Heroku CLI 7.7.10
 - ImageMagick 6.8.9-9
-- Java OpenJDK 8, 11 and 13 (ubuntu 18, 16) 14 on unbuntu 20
+- Java OpenJDK 8, 11, 14 (Ubuntu 18/20)
 - Java tools (Ant 1.9.6, Gradle 6.0, Maven 3.3.9)
 - jq 1.5-1
 - kubectl (latest stable)
