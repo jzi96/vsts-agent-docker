@@ -1,4 +1,6 @@
-FROM janzi/vsts-build-agents:ubuntu-18.04-standard
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04-docker-standard docker/18.06.3-ce/standard/.
+
+FROM janzi/vsts-build-agents:ubuntu-20.04-standard
 
 ARG DOCKER_CHANNEL=stable
 ARG DOCKER_VERSION=18.06.3-ce

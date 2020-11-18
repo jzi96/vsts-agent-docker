@@ -120,7 +120,7 @@ These derived images include a set of standard capabilities that enable many of 
 - Helm master)
 - Heroku CLI 7.7.10
 - ImageMagick 6.8.9-9
-- Java OpenJDK 8, 11 and 13
+- Java OpenJDK 8, 11 and 13 (ubuntu 18, 16) 14 on unbuntu 20
 - Java tools (Ant 1.9.6, Gradle 6.0, Maven 3.3.9)
 - jq 1.5-1
 - kubectl (latest stable)
@@ -131,12 +131,11 @@ These derived images include a set of standard capabilities that enable many of 
 - MySQL Client 5.7.23
 - MySQL Server 5.7.23
 - .NET Core SDK 2.1
-- .NET Core SDK 2.2
-- .NET Core SDK 3.0
 - .NET Core SDK 3.1
+- .NET Core SDK 5.0
 - Node.js 8.11.3 LTS (with bower, grunt, gulp, n, parcel, and webpack)
 - Powershell Core v6.1.0-preview.2
-- PyPy2 (7.2.0) and PyPy3 (7.2.0)
+- PyPy2 (7.3.2) and PyPy3 (7.3.2)
 - Python 2.7.15, 3.4.8, 3.5.5, 3.6.5 and 3.7.0 (available through the [Use Python Version](https://go.microsoft.com/fwlink/?linkid=871498) task)
 - rsync 3.1.1
 - Scala sbt-extras

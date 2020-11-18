@@ -1,4 +1,4 @@
-# docker build -t janzi/vsts-build-agents:ubuntu-20.04 standard/.
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04-standard standard/.
 
 FROM janzi/vsts-build-agents:ubuntu-20.04
 
@@ -275,13 +275,16 @@ RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64
  && ln -s /opt/pypy3/bin/pypy3 /usr/local/bin/pypy3
 
 # Install Python
-RUN apt-get update \
+RUN sudo add-apt-repository universe \
+   && apt-get update \
  && apt-get install -y --no-install-recommends \
     python \
-    python-pip \
+    python2 \
     python3 \
     python3-pip \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py \
+ && python2 get-pip.py
 
 # Install Scala build tools
 RUN curl -s https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt > /usr/local/bin/sbt \

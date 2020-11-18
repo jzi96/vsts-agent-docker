@@ -4,8 +4,8 @@ ARG GO_VERSION=1.13.5
 ARG CMAKE_MINOT_VERSION=3.16
 ARG CMAKE_VERSION=${CMAKE_MINOT_VERSION}.0
 ARG GRADLE_VERISON=6.0
-ARG PY2_VERSION=2.7-v7.2.0
-ARG PY3_VERSION=3.6-v7.2.0
+ARG PY2_VERSION=2.7-v7.3.2
+ARG PY3_VERSION=3.6-v7.3.2
 
 # Install basic command-line utilities
 RUN apt-get update \
@@ -115,12 +115,12 @@ RUN apt-add-repository -y ppa:openjdk-r/ppa
 RUN apt-get update \
  && apt-get install -y --no-install-recommends openjdk-8-jdk \
  && apt-get install -y --no-install-recommends openjdk-11-jdk \
- && apt-get install -y --no-install-recommends openjdk-13-jdk \
+ && apt-get install -y --no-install-recommends openjdk-14-jdk \
  && rm -rf /var/lib/apt/lists/*
 RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 ENV JAVA_HOME_8_X64=/usr/lib/jvm/java-8-openjdk-amd64 \
     JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64 \
-    JAVA_HOME_13_X64=/usr/lib/jvm/java-13-openjdk-amd64 \
+    JAVA_HOME_14_X64=/usr/lib/jvm/java-14-openjdk-amd64 \
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
     JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
@@ -195,9 +195,8 @@ RUN curl https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-p
  && apt-get install -y --no-install-recommends \
     apt-transport-https \
     dotnet-sdk-2.1 \
-    dotnet-sdk-2.2 \
-    dotnet-sdk-3.0 \
     dotnet-sdk-3.1 \
+    dotnet-sdk-5.0 \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /etc/apt/sources.list.d/*
 # RUN dotnet help

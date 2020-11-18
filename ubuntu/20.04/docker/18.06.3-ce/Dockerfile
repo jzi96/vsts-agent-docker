@@ -1,3 +1,5 @@
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04-docker docker/18.06.1-ce/.
+
 FROM janzi/vsts-build-agents:ubuntu-20.04
 
 ENV DOCKER_CHANNEL stable \
