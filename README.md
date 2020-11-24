@@ -10,12 +10,12 @@ You may be looking for the Azure Pipelines hosted images, which are generated in
 
 |Version  |Build Status  |
 |---------|---------|
-|Ubuntu 16.04     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/16.04/vsts.16.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=6&branchName=master) |
-|Ubuntu 16.04 Standard | [![Build Status ](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/16.04/vsts.standard-16.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=8&branchName=master) |
-|Ubuntu 16.04 Docker Standard     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/16.04/vsts.docker-standard-16.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=9&branchName=master) |
 |Ubuntu 18.04     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/18.04/vsts.18.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=12&branchName=master) |
 |Ubuntu 18.04 Standard     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/18.04/vsts.standard-18.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=11&branchName=master) |
 |Ubuntu 18.04 Docker Standard     |  [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/18.04/vsts.docker-standard-18.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=10&branchName=master) |
+|Ubuntu 20.04     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/20.04/vsts.20.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=6&branchName=master) |
+|Ubuntu 20.04 Standard | [![Build Status ](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/20.04/vsts.standard-20.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=8&branchName=master) |
+|Ubuntu 20.04 Docker Standard     | [![Build Status](https://zieschang.visualstudio.com/vsts-buid-agents/_apis/build/status/20.04/vsts.docker-standard-20.04?branchName=master)](https://zieschang.visualstudio.com/vsts-buid-agents/_build/latest?definitionId=9&branchName=master) |
 
 ## Visual Studio Team Services agent
 
@@ -25,16 +25,15 @@ This repository contains images for the Visual Studio Team Services (VSTS) agent
 
 VSTS agent images are tagged according to the base OS, an optional Team Foundation Server (TFS) version, and tools that are installed:
 
-- [`ubuntu-16.04`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/Dockerfile) [(ubuntu/16.04/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/Dockerfile)
-- [`ubuntu-16.04-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/standard/Dockerfile) [(ubuntu/16.04/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/standard/Dockerfile)
-- [`ubuntu-16.04-docker-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/docker/18.06.1-ce/standard/Dockerfile), [`latest`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/docker/18.06.1-ce/standard/Dockerfile) [(ubuntu/16.04/docker/18.06.1-ce/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/16.04/docker/18.06.1-ce/standard/Dockerfile)
-
 - [`ubuntu-18.04`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/Dockerfile) [(ubuntu/18.04/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/Dockerfile)
 - [`ubuntu-18.04-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/standard/Dockerfile) [(ubuntu/18.04/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/standard/Dockerfile)
 - [`ubuntu-18.04-docker-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/docker/18.06.1-ce/standard/Dockerfile), [`latest`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/docker/18.06.1-ce/standard/Dockerfile) [(ubuntu/18.04/docker/18.06.1-ce/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/18.04/docker/18.06.1-ce/standard/Dockerfile)
 
+- [`ubuntu-20.04`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/Dockerfile) [(ubuntu/20.04/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/Dockerfile)
+- [`ubuntu-20.04-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/standard/Dockerfile) [(ubuntu/20.04/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/standard/Dockerfile)
+- [`ubuntu-20.04-docker-standard`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/docker/18.06.1-ce/standard/Dockerfile), [`latest`](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/docker/18.06.1-ce/standard/Dockerfile) [(ubuntu/20.04/docker/18.06.1-ce/standard/Dockerfile)](https://github.com/jzi96/vsts-agent-docker/blob/master/ubuntu/20.04/docker/18.06.1-ce/standard/Dockerfile)
 
-Ubuntu 18.04 and 16.04 are the currently supported OSes, but there are plans for Windows support.
+Ubuntu 18.04 and 20.04 are the currently supported OSes, but there are plans for Windows support.
 
 When used with VSTS, the agent version is automatically determined and downloaded at container startup based on the account to which the agent is connecting. When used with TFS, an image that matches the installed TFS version should be chosen.
 
@@ -67,13 +66,6 @@ If `TFS_HOST` is provided, the TFS URL is set to `https://$TFS_HOST/tfs`. If `TF
 
 To run a VSTS agent image for TFS 2018 that identifies the server at `https://mytfs/tfs`:
 
-```
-docker run \
-  -e TFS_HOST=mytfs \
-  -e VSTS_TOKEN=<pat> \
-  -it microsoft/vsts-agent:ubuntu-16.04-tfs-2018
-```
-
 A more secure option for passing the personal access token is supported by mounting a file that contains the token into the container and specifying the location of this file with the `VSTS_TOKEN_FILE` environment variable. For instance:
 
 ```
@@ -92,7 +84,7 @@ Whether targeting VSTS or TFS, agents can be further configured with additional 
 
 The `VSTS_AGENT` and `VSTS_WORK` values are evaluated inside the container as an expression so they can use shell expansions. The `VSTS_AGENT` value is evaluated first, so the `VSTS_WORK` value may reference the expanded `VSTS_AGENT` value.
 
-To run a VSTS agent on Ubuntu 16.04 for a specific account with a custom agent name, pool and a volume mapped agent work folder:
+To run a VSTS agent on Ubuntu 20.04 for a specific account with a custom agent name, pool and a volume mapped agent work folder:
 
 ```
 docker run \
@@ -102,7 +94,7 @@ docker run \
   -e VSTS_POOL=mypool \
   -e VSTS_WORK='/var/vsts/$VSTS_AGENT' \
   -v /var/vsts:/var/vsts \
-  -it microsoft/vsts-agent:ubuntu-16.04
+  -it microsoft/vsts-agent:ubuntu-20.04
 ```
 
 ## Derived Images
@@ -120,7 +112,7 @@ These derived images include a set of standard capabilities that enable many of 
 - Helm 3
 - Heroku CLI 7.7.10
 - ImageMagick 6.8.9-9
-- Java OpenJDK 8, 11, 14 (Ubuntu 18/20)
+- Java ZuluJDK 8, 11, 14 (Ubuntu 18/20)
 - Java tools (Ant 1.9.6, Gradle 6.0, Maven 3.3.9)
 - jq 1.5-1
 - kubectl (latest stable)
@@ -154,7 +146,7 @@ docker run \
   -e VSTS_ACCOUNT=<name> \
   -e VSTS_TOKEN=<pat> \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -it microsoft/vsts-agent:ubuntu-16.04-docker-17.12.0-ce
+  -it microsoft/vsts-agent:ubuntu-20.04-docker-17.12.0-ce
 ```
 
 ### `docker-standard` images
@@ -188,7 +180,7 @@ To run a VSTS agent image for TFS 2018 that identifies the server at https://myt
 docker run \
   -e TFS_HOST=mytfs \
   -e VSTS_TOKEN=<pat> \
-  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-16.04-tfs-2018
+  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-20.04-tfs-2018
 ```
 
 A more secure option for passing the personal access token is supported by mounting a file that contains the token into the container and specifying the location of this file with the `VSTS_TOKEN_FILE` environment variable. For instance:
@@ -208,7 +200,7 @@ Whether targeting VSTS or TFS, agents can be further configured with additional 
 `VSTS_WORK`: the agent work folder (default: `"_work"`)
 The `VSTS_AGENT` and `VSTS_WORK` values are evaluated inside the container as an expression so they can use shell expansions. The `VSTS_AGENT` value is evaluated first, so the `VSTS_WORK` value may reference the expanded `VSTS_AGENT` value.
 
-To run a VSTS agent on Ubuntu 16.04 for a specific account with a custom agent name, pool and a volume mapped agent work folder:
+To run a VSTS agent on Ubuntu 20.04 for a specific account with a custom agent name, pool and a volume mapped agent work folder:
 
 ```cmd
 docker run \
@@ -218,7 +210,7 @@ docker run \
   -e VSTS_POOL=mypool \
   -e VSTS_WORK='/var/vsts/$VSTS_AGENT' \
   -v /var/vsts:/var/vsts \
-  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-16.04
+  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-20.04
 ```
 
 These images do not run "Docker in Docker", but rather re-use the host instance of Docker. To ensure this works correctly, volume map the host's Docker socket into the container:
@@ -228,7 +220,7 @@ docker run \
   -e VSTS_ACCOUNT=<name> \
   -e VSTS_TOKEN=<pat> \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-16.04-docker-17.12.0-ce
+  -it mcr.microsoft.com/azure-pipelines/vsts-agent:ubuntu-20.04-docker-17.12.0-ce
 ```
 
 ## Kubenetes Deployment

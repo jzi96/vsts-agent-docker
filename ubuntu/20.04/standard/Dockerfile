@@ -6,8 +6,8 @@ ARG GO_VERSION=1.13.5
 ARG CMAKE_MINOT_VERSION=3.16
 ARG CMAKE_VERSION=${CMAKE_MINOT_VERSION}.0
 ARG GRADLE_VERISON=6.0
-ARG PY2_VERSION=2.7-v7.3.2
-ARG PY3_VERSION=3.6-v7.3.2
+ARG PY2_VERSION=2.7-v7.3.3
+ARG PY3_VERSION=3.6-v7.3.3
 
 # Install basic command-line utilities
 RUN apt-get update \
@@ -112,18 +112,18 @@ RUN apt-get update \
     libmagic-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# Install Java OpenJDKs
-#RUN apt-add-repository -y ppa:openjdk-r/ppa
-RUN apt-get update \
- && apt-get install -y --no-install-recommends openjdk-8-jdk \
- && apt-get install -y --no-install-recommends openjdk-11-jdk \
- && apt-get install -y --no-install-recommends openjdk-14-jdk \
- && rm -rf /var/lib/apt/lists/*
-RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-ENV JAVA_HOME_8_X64=/usr/lib/jvm/java-8-openjdk-amd64 \
-    JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64 \
-    JAVA_HOME_14_X64=/usr/lib/jvm/java-14-openjdk-amd64 \
-    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
+# Install Java zulujdk
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9 \
+   && apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main' \
+   && apt-get update \
+   && apt-get install -y --no-install-recommends zulu-8 \
+   && apt-get install -y --no-install-recommends zulu-11 \
+   && apt-get install -y --no-install-recommends zulu-14 \
+   && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME_8_X64=/usr/lib/jvm/zulu-8-jdk-amd64 \
+    JAVA_HOME_11_X64=/usr/lib/jvm/zulu-11-amd64 \
+    JAVA_HOME_14_X64=/usr/lib/jvm/zulu-14-amd64 \
+    JAVA_HOME=/usr/lib/jvm/zulu11jdk-amd64 \
     JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
 # Install Java Tools (Ant, Gradle, Maven)
@@ -261,14 +261,14 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
  && rm -rf /etc/apt/sources.list.d/*
 
 # Instally PyPy2
-RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && tar -x -C /opt -f /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && rm /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && mv /opt//tmp/pypy${PY2_VERSION}-linux64 /opt/pypy2 \
- && ln -s /opt/pypy2/bin/pypy /usr/local/bin/pypy
+RUN curl https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 --output /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && tar -x -C /opt -f /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && rm /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && mv /opt/pypy${PY2_VERSION}-linux64 /opt/pypy2 \
+   && ln -s /opt/pypy2/bin/pypy /usr/local/bin/py
 
 # Install PyPy3
-RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64.tar.bz2 \
+RUN curl https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64.tar.bz2 --output /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && tar -x -C /opt -f /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && rm /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && mv /opt/pypy${PY3_VERSION}-linux64 /opt/pypy3 \

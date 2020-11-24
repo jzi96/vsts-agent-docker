@@ -6,8 +6,8 @@ ARG GO_VERSION=1.13.5
 ARG CMAKE_MINOT_VERSION=3.16
 ARG CMAKE_VERSION=${CMAKE_MINOT_VERSION}.0
 ARG GRADLE_VERISON=6.0
-ARG PY2_VERSION=2.7-v7.3.2
-ARG PY3_VERSION=3.6-v7.3.2
+ARG PY2_VERSION=2.7-v7.3.3
+ARG PY3_VERSION=3.6-v7.3.3
 
 # Install basic command-line utilities
 RUN apt-get update \
@@ -260,17 +260,15 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /etc/apt/sources.list.d/*
 
-
-
 # Instally PyPy2
-RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && tar -x -C /opt -f /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && rm /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
- && mv /opt/pypy${PY2_VERSION}-linux64 /opt/pypy2 \
- && ln -s /opt/pypy2/bin/pypy /usr/local/bin/pypy
+RUN curl https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 --output /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && tar -x -C /opt -f /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && rm /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
+   && mv /opt/pypy${PY2_VERSION}-linux64 /opt/pypy2 \
+   && ln -s /opt/pypy2/bin/pypy /usr/local/bin/py
 
 # Install PyPy3
-RUN wget -q -P /tmp https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64.tar.bz2 \
+RUN curl https://downloads.python.org/pypy/pypy${PY3_VERSION}-linux64.tar.bz2 --output /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && tar -x -C /opt -f /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && rm /tmp/pypy${PY3_VERSION}-linux64.tar.bz2 \
  && mv /opt/pypy${PY3_VERSION}-linux64 /opt/pypy3 \

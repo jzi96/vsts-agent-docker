@@ -53,3 +53,10 @@ steps:
     command: logout
     containerRegistry: dockerhub
 
+- template: azure-pipelines-standard.yml  # Template reference
+  condition: and(succeeded(), not(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+  # parameters:
+  #   name: Full
+  #   testFile: tests/fullSuite.js
+- template: azure-pipelines-docker-std.yaml  # Template reference
+  condition: and(succeeded(), not(eq(variables['Build.SourceBranch'], 'refs/heads/master')))
