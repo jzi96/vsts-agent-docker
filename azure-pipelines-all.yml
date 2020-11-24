@@ -52,3 +52,9 @@ steps:
   inputs:
     command: logout
     containerRegistry: dockerhub
+
+- template: azure-pipelines-standard.yml  # Template reference
+  # parameters:
+  #   name: Full
+  #   testFile: tests/fullSuite.js
+- template: azure-pipelines-docker-std.yaml  # Template reference
