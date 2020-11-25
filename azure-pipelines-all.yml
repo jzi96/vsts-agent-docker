@@ -9,6 +9,8 @@ trigger:
 variables:
   repoName: 'janzi/vsts-build-agents'
   tagName: 'ubuntu-$(ubuntuversion)'
+  tagNamest: 'ubuntu-$(ubuntuversion)-standard'
+  tagNamedst: 'ubuntu-$(ubuntuversion)-docker-standard'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -37,9 +39,10 @@ steps:
     tags: |
       $(Build.SourceBranchName)
       $(Build.BuildId)
-      $(tagName)
+      $(tagNamest)
     addPipelineData: true
-    arguments: -t $(repoName):$(tagName)
+    arguments: -t $(repoName):$(tagNamest)
+
 - task: Docker@2
   displayName: Build docker standard image
   inputs:
@@ -49,7 +52,7 @@ steps:
     tags: |
       $(Build.SourceBranchName)
       $(Build.BuildId)
-      $(tagName)
+      $(tagNamedst)
     addPipelineData: true
-    arguments: -t $(repoName):$(tagName)
+    arguments: -t $(repoName):$(tagNamedst)
 
