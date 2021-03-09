@@ -282,9 +282,10 @@ RUN sudo add-apt-repository universe \
     python2 \
     python3 \
     python3-pip \
- && rm -rf /var/lib/apt/lists/* \
- && curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py \
- && python2 get-pip.py
+ && rm -rf /var/lib/apt/lists/*
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip2.py \
+      #&& curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py \
+      && python2 get-pip2.py
 
 # Install Scala build tools
 RUN curl -s https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt > /usr/local/bin/sbt \
