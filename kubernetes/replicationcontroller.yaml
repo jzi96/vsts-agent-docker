@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-vsts-agent
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: my-vsts-agent
+        version: "0.1"
+    spec:
+      containers:
+      - name: my-vsts-agent
+        image: hub.docker.com/janzi/vsts-build-agents:ubuntu-18.04-docker-standard
+        env:
+          - name: VSTS_ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: vsts
+                key: VSTS_ACCOUNT
+          - name: VSTS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: vsts
+                key: VSTS_TOKEN
+          - name: VSTS_POOL
+            value: my-devops-pool
+          - name: VSTS_WORK
+            value: /tmp/vsts/$VSTS_AGENT
+        volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-volume
+      volumes:
+      - name: docker-volume
+        hostPath:
+          path: /var/run/docker.sock

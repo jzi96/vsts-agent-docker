@@ -81,7 +81,7 @@ metadata:
     release: my-vsts-agent
 rules:
   - apiGroups: ["apps", "extensions"]
-    resources: ["deployments"]
+    resources: ["deployments", "deployments/scale"]
     resourceNames: [my-vsts-agent]
     verbs: ["get", "patch", "list", "watch"] # "list" and "watch" are only needed
                                              # if you want to use `rollout status`
@@ -195,6 +195,6 @@ spec:
                 - 'deployment'
                 - 'my-vsts-agent'
                 - '--replicas=1'
-
+# replace `my-vsts-agent` and `myagentns`
 #kubectl create secret vsts
 #kubectl create secret generic vsts --from-literal=VSTS_TOKEN=<PAT> --from-literal=VSTS_ACCOUNT=<my-account>
