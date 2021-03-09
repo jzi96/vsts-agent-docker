@@ -44,6 +44,8 @@ RUN mkdir -p "/root/.microsoft/Team Foundation/4.0/Configuration/TEE-Mementos" \
  && cd "/root/.microsoft/Team Foundation/4.0/Configuration/TEE-Mementos" \
  && echo '<ProductIdData><eula-14.0 value="true"/></ProductIdData>' > "com.microsoft.tfs.client.productid.xml"
 
+# RUN echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+
 WORKDIR /vsts
 
 COPY ./start.sh .
