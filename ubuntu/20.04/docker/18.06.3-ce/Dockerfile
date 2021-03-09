@@ -1,4 +1,4 @@
-# docker build -t janzi/vsts-build-agents:ubuntu-20.04-docker docker/18.06.1-ce/.
+# docker build -t janzi/vsts-build-agents:ubuntu-20.04-docker docker/18.06.3-ce/.
 
 FROM janzi/vsts-build-agents:ubuntu-20.04
 
