@@ -257,15 +257,15 @@ ENV bower=/usr/local/bin/bower \
 #  && apt-get install -y --no-install-recommends pollinate \
 #  && rm -rf /var/lib/apt/lists/*
 
-## Install Powershell Core
-#RUN curl "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb" > packages-microsoft-prod.deb \
-#   && dpkg -i packages-microsoft-prod.deb \
-#   && rm packages-microsoft-prod.deb \
-#   && apt-get update \
-#   && apt-get install -y --no-install-recommends \
-#    powershell \
-# && rm -rf /var/lib/apt/lists/* \
-# && rm -rf /etc/apt/sources.list.d/*
+# Install Powershell Core
+RUN curl "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb" > packages-microsoft-prod.deb \
+   && dpkg -i packages-microsoft-prod.deb \
+   && rm packages-microsoft-prod.deb \
+   && apt-get update \
+   && apt-get install -y --no-install-recommends \
+    powershell \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /etc/apt/sources.list.d/*
 
 ## Instally PyPy2
 #RUN curl https://downloads.python.org/pypy/pypy${PY2_VERSION}-linux64.tar.bz2 --output /tmp/pypy${PY2_VERSION}-linux64.tar.bz2 \
