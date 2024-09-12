@@ -2,14 +2,18 @@
 
 FROM ubuntu:22.04
 
+
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils ca-certificates
 
+# add VF certificates
+COPY assets/*.crt /usr/local/share/ca-certificates/
+RUN update-ca-certificates
 
 # Trusty needs an updated backport of apt to avoid hash sum mismatch errors
 RUN [ "xenial" = "trusty" ] \
