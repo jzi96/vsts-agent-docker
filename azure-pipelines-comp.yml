@@ -1,0 +1,103 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+variables:
+  repoName: 'janzi/vsts-build-agents'
+  tagNameBase: 'ubuntu-$(ubuntuversion)'
+  tagNameStd: '$(tagNameBase)-standard'
+  tagNameBuildah: '$(tagNameStd)-buildah'
+  tagNameBuildKit: '$(tagNameStd)-buildkit'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: Build base image
+  inputs:
+    command: 'build'
+    containerRegistry: $(registryName)
+    repository: '$(repoName)'
+    Dockerfile: 'ubuntu/$(ubuntuversion)/Dockerfile'
+    tags: |
+      $(Build.SourceBranchName)
+      $(Build.BuildId)
+      $(tagNameBase)
+    addPipelineData: true
+    arguments: -t $(repoName):$(tagNameBase)
+
+- task: Docker@2
+  displayName: Build build standard image
+  inputs:
+    command: 'build'
+    containerRegistry: $(registryName)
+    repository: '$(repoName)'
+    Dockerfile: 'ubuntu/$(ubuntuversion)/standard/Dockerfile'
+    tags: |
+      $(Build.SourceBranchName)
+      $(Build.BuildId)
+      $(tagNameStd)
+    addPipelineData: true
+    arguments: -t $(repoName):$(tagNameStd)
+
+- task: Docker@2
+  displayName: Build Standard Buildah image
+  inputs:
+    command: 'build'
+    containerRegistry: $(registryName)
+    repository: '$(repoName)'
+    Dockerfile: 'ubuntu/$(ubuntuversion)/buildah/Dockerfile'
+    tags: |
+      $(Build.SourceBranchName)
+      $(Build.BuildId)
+      $(tagNameBuildah)
+    addPipelineData: true
+    arguments: -t $(repoName):$(tagNameBuildah)
+
+- task: Docker@2
+  displayName: Build Standard Buildkit image
+  inputs:
+    command: 'build'
+    containerRegistry: $(registryName)
+    repository: '$(repoName)'
+    Dockerfile: 'ubuntu/$(ubuntuversion)/buildkit/Dockerfile'
+    tags: |
+      $(Build.SourceBranchName)
+      $(Build.BuildId)
+      $(tagNameBuildkit)
+    addPipelineData: true
+    arguments: -t $(repoName):$(tagNameBuildkit)
+
+- task: Docker@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: 'push'
+    containerRegistry: $(registryName)
+    Dockerfile: 'ubuntu/$(ubuntuversion)/standard/Dockerfile'
+    repository: '$(repoName)'
+    tags: |
+      $(tagNameStd)    
+- task: Docker@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: 'push'
+    containerRegistry: marketshub
+    Dockerfile: 'ubuntu/$(ubuntuversion)/buildah/Dockerfile'
+    repository: '$(repoName)'
+    tags: |
+      $(tagNameBuildah)    
+
+- task: Docker@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: 'push'
+    containerRegistry: $(registryName)
+    Dockerfile: 'ubuntu/$(ubuntuversion)/buildkit/Dockerfile'
+    repository: '$(repoName)'
+    tags: |
+      $(tagNameBuildkit)    
